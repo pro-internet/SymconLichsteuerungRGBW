@@ -1,0 +1,13 @@
+{
+    "id": "{4e529a7f-4aaf-461a-acc0-1d7b602ba8c2}",
+    "name": "Lichtsteuerung RGBW",
+    "type": 3,
+    "vendor": "prointernet",
+    "aliases": [
+        "Lichtsteuerung RGBW"
+    ],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "DMXDYN"
+}
