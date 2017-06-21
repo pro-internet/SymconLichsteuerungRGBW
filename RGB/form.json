@@ -56,15 +56,6 @@
                 "edit": {
                     "type": "SelectVariable"
                 }
-            },
-            {
-                "label": "W-Channel",
-                "name": "WChannel",
-                "width": "75px",
-                "add": 0,
-                "edit": {
-                    "type": "SelectVariable"
-                }
             }
 
         ],
@@ -72,7 +63,7 @@
         "actions": [{
             "type": "Button",
             "label": "Update",
-            "onClick": "DMXDYN_DeleteObject();"
+            "onClick": "DMXRGB_DeleteObject();"
         }]
     }]
 }
