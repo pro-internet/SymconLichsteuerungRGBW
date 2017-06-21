@@ -53,7 +53,7 @@
 
     // Create Instance Vars (RGBW & FadeWert)
     // CreateVariable($type, $name, $ident, $parent, $position, $initVal, $profile, $action, $hide)
-    $VarID = @IPS_GetVariableID("Global R");
+    $VarID = @IPS_GetVariableIDByName("Global R", $parent);
     if (!IPS_VariableExists($VarID)){
       $vid = $this->CreateVariable(1,"Global R","VarID_RWert", $parent, 1, 0, "DMX.Dim", $svs, false);
       $vid = $this->CreateVariable(1,"Global G","VarID_GWert", $parent, 2, 0, "DMX.Dim", $svs, false);
