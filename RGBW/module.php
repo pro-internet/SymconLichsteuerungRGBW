@@ -37,27 +37,29 @@
 
       // Create SetValue Script
       if(@IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID) === false){
-      $sid = IPS_CreateScript(0 /* PHP Script */);
-      IPS_SetParent($sid, $this->InstanceID);
-      IPS_SetName($sid, "SetValue");
-      IPS_SetIdent($sid, "SetValueScript");
-      IPS_SetHidden($sid, true);
-      IPS_SetScriptContent($sid, "<?
-      if (\$IPS_SENDER == \"WebFront\"){
-        SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
-      }
-      ?>");
+        $sid = IPS_CreateScript(0 /* PHP Script */);
+        IPS_SetParent($sid, $this->InstanceID);
+        IPS_SetName($sid, "SetValue");
+        IPS_SetIdent($sid, "SetValueScript");
+        IPS_SetHidden($sid, true);
+        IPS_SetScriptContent($sid, "<?
+        if (\$IPS_SENDER == \"WebFront\"){
+          SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
+        }
+        ?>");
     }
 
     $svs = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
 
     // Create Instance Vars (RGBW & FadeWert)
     // CreateVariable($type, $name, $ident, $parent, $position, $initVal, $profile, $action, $hide)
-    $vid = $this->CreateVariable(1,"Global R","VarID_RWert", $parent, 1, 0, "DMX.Dim", $svs, false);
-    $vid = $this->CreateVariable(1,"Global G","VarID_GWert", $parent, 2, 0, "DMX.Dim", $svs, false);
-    $vid = $this->CreateVariable(1,"Global B","VarID_BWert", $parent, 3, 0, "DMX.Dim", $svs, false);
-    $vid = $this->CreateVariable(1,"Global W","VarID_WWert", $parent, 4, 0, "DMX.Dim", $svs, false);
-    $vid = $this->CreateVariable(2, "Global Fade","VarID_FadeWert", $parent, 5, 1, "DMX.Fade", $svs, false);
+    if(!IPS_VariableProfileExists("VarID_RWert")){
+      $vid = $this->CreateVariable(1,"Global R","VarID_RWert", $parent, 1, 0, "DMX.Dim", $svs, false);
+      $vid = $this->CreateVariable(1,"Global G","VarID_GWert", $parent, 2, 0, "DMX.Dim", $svs, false);
+      $vid = $this->CreateVariable(1,"Global B","VarID_BWert", $parent, 3, 0, "DMX.Dim", $svs, false);
+      $vid = $this->CreateVariable(1,"Global W","VarID_WWert", $parent, 4, 0, "DMX.Dim", $svs, false);
+      $vid = $this->CreateVariable(2, "Global Fade","VarID_FadeWert", $parent, 5, 1, "DMX.Fade", $svs, false);
+    }
 
 
 
