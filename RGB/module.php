@@ -219,7 +219,7 @@
 
         $deviceProp = IPS_GetObject($ObjektID);
 
-        $getSwitch = $deviceProp['ChildrenIDs'][4];
+        $getSwitch = $deviceProp['ChildrenIDs'][3];
         $Switch = GetValue($getSwitch);
 
         $getDevice = IPS_GetParent($device->RChannel);
