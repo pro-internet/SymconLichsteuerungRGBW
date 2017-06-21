@@ -110,21 +110,6 @@
         $S = $array['Name'];
         $P = $array['Sort'];
 
-        /*$isEmpty = @IPS_GetObjectIDByIdent("R", $insID);
-        if(!empty($isEmpty)){
-          $RV = IPS_GetVariableIDByName("R",      $insID);
-          $GV = IPS_GetVariableIDByName("G",      $insID);
-          $BV = IPS_GetVariableIDByName("B",      $insID);
-          $WV = IPS_GetVariableIDByName("W",      $insID);
-          $SV = IPS_GetObjectIDByIdent("Switch", $insID);
-          $EV = IPS_GetEventIDByName("TriggerOnChange",  $insID);
-          IPS_DeleteVariable($RV);
-          IPS_DeleteVariable($GV);
-          IPS_DeleteVariable($BV);
-          IPS_DeleteVariable($WV);
-          IPS_DeleteVariable($SV);
-          IPS_DeleteEvent($EV);
-        } */
 
         // Generate Values
 
@@ -206,7 +191,7 @@
         $getSwitch = $deviceProp['ChildrenIDs'][1];
         $Switch = GetValue($getSwitch);
 
-        $getDevice = IPS_GetParent($device->RChannel);
+        $getDevice = IPS_GetParent($device->WChannel);
 
         $getValueChannelW = GetValue($device->WChannel);
 
