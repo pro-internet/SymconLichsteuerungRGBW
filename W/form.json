@@ -44,7 +44,7 @@
         "actions": [{
             "type": "Button",
             "label": "Update",
-            "onClick": "DMXRGB_DeleteObject();"
+            "onClick": "DMXW_DeleteObject();"
         }]
     }]
 }
