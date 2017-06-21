@@ -1,0 +1,50 @@
+{
+    "elements": [{
+        "type": "List",
+        "name": "Lichter",
+        "caption": "Räume:",
+        "rowCount": 8,
+        "columnCount": 12,
+        "add": true,
+        "delete": true,
+        "sort": {
+            "column": "name",
+            "direction": "ascending"
+        },
+        "columns": [{
+                "label": "Name",
+                "name": "Name",
+                "width": "75px",
+                "add": "",
+                "edit": {
+                    "type": "ValidationTextBox"
+                }
+            },
+            {
+                "label": "Sortierung",
+                "name": "Sort",
+                "width": "75px",
+                "add": 1,
+                "edit": {
+                    "type": "NumberSpinner"
+                }
+            },
+            {
+                "label": "W-Channel",
+                "name": "WChannel",
+                "width": "75px",
+                "add": 0,
+                "edit": {
+                    "type": "SelectVariable"
+                }
+            }
+
+        ],
+        "values": [{}],
+        "actions": [{
+            "type": "Button",
+            "label": "Update",
+            "onClick": "DMXRGB_DeleteObject();"
+        }]
+    }]
+}
