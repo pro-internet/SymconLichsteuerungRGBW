@@ -87,21 +87,24 @@
     $deviceList = json_decode($this->ReadPropertyString("Lichter"));
     //print_r($deviceList);
 
-    if (is_array($deviceList) || is_object($deviceList)){
+       if (is_array($deviceList) || is_object($deviceList)){
       foreach($deviceList as $i => $list){
 
-        if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) === false){
+        if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) == false){
           $insID = IPS_CreateInstance($dummyGUID);
           IPS_SetParent($insID, IPS_GetParent($this->InstanceID));
+          IPS_SetName($insID, $list->Name);
+          //IPS_SetName(" ");
+          IPS_SetPosition($insID, $i + 1);
+          IPS_SetIdent($insID, "device$i");
         }
         else{
           $insID = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+          IPS_SetName($insID, $list->Name);
+          //IPS_SetName(" ");
+          IPS_SetPosition($insID, $i + 1);
         }
 
-        IPS_SetName($insID, $list->Name);
-        //IPS_SetName(" ");
-        IPS_SetPosition($insID, $i + 1);
-        IPS_SetIdent($insID, "device$i");
 
         $array = json_decode(json_encode($list),true);
         //print_r($array);
@@ -127,6 +130,7 @@
           $vid = $this->CreateEventOn($insID, $triggerID, $hauptInstanz);
         }
         //lösche überschüssige räume
+        /*
     			while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID))))
     			{
     				$i++;
@@ -136,6 +140,7 @@
     					$this->DeleteObject($id);
     				}
     			}
+          */
       }
     }
 
