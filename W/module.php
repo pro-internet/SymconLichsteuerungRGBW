@@ -43,9 +43,9 @@
       IPS_SetIdent($sid, "SetValueScript");
       IPS_SetHidden($sid, true);
       IPS_SetScriptContent($sid, "<?
-      
-      SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
-      
+      if (\$IPS_SENDER == \"WebFront\"){
+        SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
+      }
       ?>");
     }
 
