@@ -35,19 +35,19 @@
       }
 
 
-      // Create SetValue Script
-      if(@IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID) === false){
-      $sid = IPS_CreateScript(0 /* PHP Script */);
-      IPS_SetParent($sid, $this->InstanceID);
-      IPS_SetName($sid, "SetValue");
-      IPS_SetIdent($sid, "SetValueScript");
-      IPS_SetHidden($sid, true);
-      IPS_SetScriptContent($sid, "<?
-      if (\$IPS_SENDER == \"WebFront\"){
-        SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
-      }
-      ?>");
-    }
+    //   // Create SetValue Script
+    //   if(@IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID) === false){
+    //   $sid = IPS_CreateScript(0 /* PHP Script */);
+    //   IPS_SetParent($sid, $this->InstanceID);
+    //   IPS_SetName($sid, "SetValue");
+    //   IPS_SetIdent($sid, "SetValueScript");
+    //   IPS_SetHidden($sid, true);
+    //   IPS_SetScriptContent($sid, "<?
+    //   if (\$IPS_SENDER == \"WebFront\"){
+    //     SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
+    //   }
+    //   ?>");
+    // }
 
     $svs = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
 
