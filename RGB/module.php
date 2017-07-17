@@ -49,6 +49,11 @@
       ?>');
       } else {
         $sid = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
+        IPS_SetScriptContent($sid, '<?
+
+          SetValue($_IPS["VARIABLE"], $_IPS["VALUE"]);
+
+        ?>');
       }
 
     $svs = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
