@@ -38,9 +38,6 @@
       // Create SetValue Script
       if(@IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID) === false){
       $sid = IPS_CreateScript(0 /* PHP Script */);
-      } else {
-        $sid = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID)
-      }
       IPS_SetParent($sid, $this->InstanceID);
       IPS_SetName($sid, "SetValue");
       IPS_SetIdent($sid, "SetValueScript");
@@ -50,7 +47,9 @@
         SetValue($_IPS["VARIABLE"], $_IPS["VALUE"]);
 
       ?>');
-    }
+      } else {
+        $sid = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
+      }
 
     $svs = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
 
