@@ -42,11 +42,19 @@
       IPS_SetName($sid, "SetValue");
       IPS_SetIdent($sid, "SetValueScript");
       IPS_SetHidden($sid, true);
-      IPS_SetScriptContent($sid, "<?
-      if (\$IPS_SENDER == \"WebFront\"){
-        SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
-      }
-      ?>");
+      IPS_SetScriptContent($sid, '<?
+
+        SetValue($_IPS["VARIABLE"], $_IPS["VALUE"]);
+
+      ?>');
+      } else {
+        $sid = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
+        IPS_SetScriptContent($sid, '<?
+
+          SetValue($_IPS["VARIABLE"], $_IPS["VALUE"]);
+
+
+        ?>');
     }
 
     $svs = IPS_GetObjectIDByIdent("SetValueScript", $this->InstanceID);
