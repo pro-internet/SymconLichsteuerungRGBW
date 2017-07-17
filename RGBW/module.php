@@ -43,9 +43,9 @@
         IPS_SetIdent($sid, "SetValueScript");
         IPS_SetHidden($sid, true);
         IPS_SetScriptContent($sid, "<?
-        if (\$IPS_SENDER == \"WebFront\"){
-          SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
-        }
+        
+        SetValue(\$_IPS['VARIABLE'], \$_IPS['VALUE']);
+
         ?>");
     }
 
@@ -140,15 +140,15 @@
         }
         //lösche überschüssige räume
         /*
-    			while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID))))
-    			{
-    				$i++;
-    				if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) !== false)
-    				{
-    					$id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
-    					$this->DeleteObject($id);
-    				}
-    			}
+          while($i < count(IPS_GetChildrenIDs(IPS_GetParent($this->InstanceID))))
+          {
+            $i++;
+            if(@IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID)) !== false)
+            {
+              $id = IPS_GetObjectIDByIdent("device$i", IPS_GetParent($this->InstanceID));
+              $this->DeleteObject($id);
+            }
+          }
           */
 
 
