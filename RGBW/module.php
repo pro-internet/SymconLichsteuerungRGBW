@@ -369,7 +369,7 @@
     IPS_SetName($eid, "TriggerOnChange".$triggerID);
     IPS_SetIdent($eid, "TriggerOnChange".$triggerID);
     // Set Script
-    IPS_SetEventScript($eid, "DMXDYN_eventTriggerOnChange(". $Instance .", ". $triggerID .");");
+    IPS_SetEventScript($eid, "DMXDYN_eventTriggerOnChange(". $Instance .");");
     // OnUpdate für Variable 12345
     IPS_SetEventTrigger($eid, 0, $triggerID);
     IPS_SetEventActive($eid, true);
