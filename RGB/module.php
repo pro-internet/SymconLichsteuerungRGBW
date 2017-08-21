@@ -204,7 +204,7 @@
 
     $object = IPS_GetObject($parent);
 
-    $getList =  IPS_GetProperty($parent, "Lichter");
+    $getList =  IPS_GetProperty($InstanceID, "Lichter");
     $deviceList = json_decode($getList);
 
     // Get Global ID`s
