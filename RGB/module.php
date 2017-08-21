@@ -204,14 +204,14 @@
 
     $object = IPS_GetObject($parent);
 
-    $getList =  IPS_GetProperty($parent, "Lichter");
+    $getList =  IPS_GetProperty($InstanceID, "Lichter");
     $deviceList = json_decode($getList);
 
     // Get Global ID`s
-    $getGlobalR = IPS_GetVariableIDByName("Global R", $parent);
-    $getGlobalG = IPS_GetVariableIDByName("Global G", $parent);
-    $getGlobalB = IPS_GetVariableIDByName("Global B", $parent);
-    $getGlobalF = IPS_GetVariableIDByName("Global Fade", $parent);
+    $getGlobalR = IPS_GetObjectIDByIdent("VarID_RWert", $InstanceID);
+    $getGlobalG = IPS_GetObjectIDByIdent("VarID_GWert", $InstanceID);
+    $getGlobalB = IPS_GetObjectIDByIdent("VarID_BWert", $InstanceID);
+    $getGlobalF = IPS_GetObjectIDByIdent("VarID_FadeWert", $InstanceID);
 
     // Get Global Values
     $getValueGlobalR = GetValue($getGlobalR);
@@ -227,7 +227,7 @@
         $channelName = $device->Name;
         //$ObjectID = @IPS_GetObjectIDByName($channelName, $parent);
         //$Object = IPS_GetObject($ObjectID);
-        $ObjektID = @IPS_GetObjectIDByName($device->Name, $fatherParent);
+        $ObjektID = @IPS_GetObjectIDByName($device->Name, $parent);
 
         $deviceProp = IPS_GetObject($ObjektID);
 
@@ -361,17 +361,17 @@
   }
 
   protected function CreateEventTrigger($triggerID){
-    $Instance = $this->InstanceID;
+    $InstanceID = $this->InstanceID;
 
     // 0 = ausgelöstes; 1 = zyklisches; 2 = Wochenplan;
     $eid = IPS_CreateEvent(0);
     // Set Parent
-    IPS_SetParent($eid, $Instance);
+    IPS_SetParent($eid, $InstanceID);
     // Set Name
     IPS_SetName($eid, "TriggerOnChange".$triggerID);
     IPS_SetIdent($eid, "TriggerOnChange".$triggerID);
     // Set Script
-    IPS_SetEventScript($eid, "DMXRGB_eventTriggerOnChange(". $Instance .", ". $triggerID .");");
+    IPS_SetEventScript($eid, "DMXRGB_eventTriggerOnChange(". $InstanceID .", ". $InstanceID .");");
     // OnUpdate für Variable 12345
     IPS_SetEventTrigger($eid, 0, $triggerID);
     IPS_SetEventActive($eid, true);
